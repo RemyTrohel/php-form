@@ -8,8 +8,8 @@
     <body>
 
     <?php
-        $lastnameErr = $firstnameErr = $emailErr = $phoneErr = $messageErr = "";
-        $lastname = $firstname = $email = $phone = $message = "";
+        $lastnameErr = $firstnameErr = $emailErr = $phoneErr = $subjectErr = $messageErr = "";
+        $lastname = $firstname = $email = $phone = $subject = $message = "";
         if(isset($_POST["user_submit"])) {
             if (empty($_POST["user_lastname"])) {
                 $lastnameErr = "Lastname is required";
@@ -18,8 +18,11 @@
                 if (strlen($lastname) == 0) {
                     $lastnameErr = "Lastname is required";
                 }
-                else if (!preg_match("/^[A-Za-zÀ-ÖØ-öø-ÿ -]*$/",$lastname)) {
-                    $lastnameErr = "Only letters, '-' and white space allowed";
+                else if (!preg_match("/^[A-Za-zÀ-ÖØ-öø-ÿ -_]*$/",$lastname)) {
+                    $lastnameErr = "Only letters, '-', '_' and white space allowed";
+                }
+                else if (strlen($lastname) > 50) {
+                    $lastnameErr = "Lastname must be < 50 characters";
                 }
             }
 
@@ -30,9 +33,12 @@
                 if (strlen($firstname) == 0) {
                     $firstnameErr = "Firstname is required";
                 }
-                else if (!preg_match("/^[A-Za-zÀ-ÖØ-öø-ÿ -]*$/",$firstname)) {
+                else if (!preg_match("/^[A-Za-zÀ-ÖØ-öø-ÿ -_]*$/",$firstname)) {
                     $firstnameErr = "Only letters, '-' and white space allowed";
-                  }
+                }
+                else if (strlen($lastname) > 50) {
+                    $lastnameErr = "Lastname must be < 50 characters";
+                }
             }
 
             if (empty($_POST["user_email"])) {
@@ -53,6 +59,12 @@
                 }
             }
 
+            if (empty($_POST["user_subject"])) {
+                $subjectErr = "Subject is required";
+            } else {
+                $subject = test_input($_POST["user_subject"]);
+            }
+
             if (empty($_POST["user_message"])) {
                 $messageErr = "Message is required";
             } else {
@@ -65,6 +77,7 @@
                 $firstnameErr == "" && 
                 $emailErr == "" && 
                 $phoneErr == "" && 
+                $subjectErr == "" &&
                 $messageErr == "") {
                     header("Location: http://localhost:8000/success.php");
             }
