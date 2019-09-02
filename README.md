@@ -26,7 +26,7 @@ Aujourd'hui tu vas t’atteler à la tâche la plus classique : créer un formul
 
 Tous les champs doivent être obligatoirement remplis avant de soumettre le formulaire. Une fois le formulaire soumis et validé :
 
-- Toutes les données saisies sont correctes, l’utilisateur est notifié que son message "a été envoyé".
+- Toutes les données saisies sont correctes, l’utilisateur est notifié que son message "*a été envoyé*".
 
 - En cas d'erreur, l'utilisateur est renvoyé sur le formulaire avec un message lui indiquant quelle erreur il a fait dans sa saisie.
 
@@ -34,15 +34,16 @@ Tous les champs doivent être obligatoirement remplis avant de soumettre le form
 
     >Tu l'auras remarqué, à aucun moment on te demande d'envoyer le mail. C'est normal, il s'agit là d'une autre problématique. Concentre-toi sur la gestion des formulaires pour le moment, tu verras ça plus tard.
 
+#
 ### Critères de validation
 
-- Le formulaire de contact comporte les champs : nom, prénom, e-mail, téléphone, sujet (sous forme de liste déroulante) et message (textarea).
-- Côté client / front :
+- Le formulaire de contact comporte les champs : **nom**, **prénom**, **e-mail**, **téléphone**, **sujet** *(sous forme de liste déroulante)* et **message** *(textarea)*.
+- **Côté client / front** :
     Tous les champs sont requis;
-    la validité du champs e-mail est vérifiée et correspond au format attendu.
-- Côté serveur :
+    la validité du champs **e-mail** est vérifiée et correspond au format attendu.
+- **Côté serveur** :
     Tous les champs sont requis et ne doivent pas être vides;
-    Le format du champ e-mail est vérifié, à l'aide de [filter_var](http://php.net/manual/fr/function.filter-var.php) par exemple.
+    Le format du champ *e-mail* est vérifié, à l'aide de [filter_var](http://php.net/manual/fr/function.filter-var.php) par exemple.
 - S'il y a des erreurs, un message s’affiche pour chaque champ.
 - En cas de succès, tu dois afficher un message de félicitations sur une page dédiée. Pour rediriger en PHP, tu peux regarder la première partie de cette ressource : [PHP Redirect To Another URL / Web Page Script Example](https://www.cyberciti.biz/faq/php-redirect/)
 - Le code est disponible sur un dépot Gist ou Github.
