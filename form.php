@@ -61,16 +61,6 @@
                     $messageErr = "Message is required";
                 }
             }
-
-            if (empty($_POST["user_message"])) {
-                $messageErr = "Message is required";
-            } else {
-                $message = test_input($_POST["user_message"]);
-                if (strlen($message) == 0) {
-                    $messageErr = "Message is required";
-                }
-            }
-
             if ($lastnameErr == "" && 
                 $firstnameErr == "" && 
                 $emailErr == "" && 
